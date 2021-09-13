@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "dev:projectA": "vue-cli-service serve",
+    "dev:projectB": "vue-cli-service serve",
+    "build-projectA": "vue-cli-service build projectA",
+    "build-projectB": "vue-cli-service build projectB",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

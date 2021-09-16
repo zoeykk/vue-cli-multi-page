@@ -3,37 +3,16 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 
-let projectName = "";
-const isProduction = process.env.NODE_ENV == "production";
+// 获取npm script命令
+// process.argv[3] 命令值参数 第四个命令
+// process.env.npm_lifecycle_event 命令值键参数  eg:第一个参数 process.env.npm_lifecycle_event.split(":")[1]
 
-// 运行全部
-// var items = glob.sync("./src/projects/*/*.js");
-// for (var i in items) {
-//   var filepath = items[i];
-//   var fileList = filepath.split("/");
-//   var fileName = fileList[fileList.length - 2];
-//   entries[fileName] = {
-//     entry: `src/projects/${fileName}/main.js`,
-//     // 模板来源
-//     template: `public/index.html`,
-//     // 在 dist/index.html 的输出
-//     filename: `${fileName}.html`,
-//     // 提取出来的通用 chunk 和 vendor chunk。
-//     chunks: ["chunk-vendors", "chunk-common", fileName],
-//   };
-// }
-
+let projectName = process.env.PROJECT;
 function getPages() {
-  projectName = isProduction
-    ? process.argv[3]
-    : process.env.npm_lifecycle_event.split(":")[1];
   return {
     index: {
-      // page的入口
       entry: "src/projects/" + projectName + "/main.js",
-      // 模板来源
       template: "public/index.html",
-      // 在 dist/index.html 的输出
       filename: "index.html",
       title: projectName,
       chunks: ["chunk-vendors", "chunk-common", "index"],

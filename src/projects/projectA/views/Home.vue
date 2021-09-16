@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       env: process.env.VUE_APP_COMMON,
-      devEnv: process.env.VUE_APP_DEV,
+      devEnv: process.env.VUE_APP_BASEURL,
     };
   },
 };
